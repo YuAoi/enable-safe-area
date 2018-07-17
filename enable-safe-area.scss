@@ -1,0 +1,18 @@
+@mixin safe-area-value($prop: padding-top, $direction: top, $optional: 0px) {
+  [enable-safe-area] & {
+    #{$prop}: calc(constant(safe-area-inset-#{$direction}) + #{$optional});
+    #{$prop}: calc(env(safe-area-inset-#{$direction}) + #{$optional});
+  }
+  [enable-safe-area][data-dpr="1"] & {
+    #{$prop}: calc(constant(safe-area-inset-#{$direction}) + #{$optional});
+    #{$prop}: calc(env(safe-area-inset-#{$direction}) + #{$optional});
+  }
+  [enable-safe-area][data-dpr="2"] & {
+    #{$prop}: calc((constant(safe-area-inset-#{$direction}) * 2) + #{$optional});
+    #{$prop}: calc((env(safe-area-inset-#{$direction}) * 2) + #{$optional});
+  }
+  [enable-safe-area][data-dpr="3"] & {
+    #{$prop}: calc((constant(safe-area-inset-#{$direction}) * 3) + #{$optional});
+    #{$prop}: calc((env(safe-area-inset-#{$direction}) * 3) + #{$optional});
+  }
+}
